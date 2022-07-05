@@ -1,0 +1,111 @@
+<h1>New User Sign Up</h1>
+<printname></printname>
+<!-- Template Variables - Hold the object of the element they are declared within-->
+<div class="container center signup mt-5">
+  <form #form="ngForm" (ngSubmit)="signup(email_)">
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">First Name</label>
+      <input
+        #first_name_="ngModel"
+        [(ngModel)]="first_name"
+        name="first_name"
+        type="text"
+        class="form-control"
+        minlength="3"
+        id="exampleInputPassword1"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Last Name</label>
+      <input
+        #last_name_="ngModel"
+        [(ngModel)]="last_name"
+        name="last_name"
+        type="text"
+        class="form-control"
+        minlength="3"
+        id="exampleInputPassword1"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Phone Number</label>
+      <input
+        #phone_number_="ngModel"
+        [(ngModel)]="phone_number"
+        name="phone_number"
+        type="text"
+        class="form-control"
+        minlength="3"
+        id="exampleInputPassword1"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <!-- #email is Template Variables  -->
+      <input
+        name="email"
+        #email_="ngModel"
+        [(ngModel)]="email"
+        id="email"
+        type="email"
+        required
+        pattern="^[^s@]+@[^s@]+.[^s@]{2,}$"
+        class="form-control"
+        aria-describedby="emailHelp"
+      />
+      <div id="emailHelp" class="form-text">
+        We'll never share your email with anyone else.
+      </div>
+      <div
+        class="alert alert-danger"
+        role="alert"
+        *ngIf="email_.touched && email_.invalid"
+      >
+        The expected format is bob@domain.com
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="password1" class="form-label">Password</label>
+      <!-- rejexをserverで確認するときは、初めと終わりに、/が必要なので、注意！ -->
+      <input
+        name="password1"
+        #password1_ = "ngModel"
+        [(ngModel)]="password1"
+        id="password1"
+        type="password"
+        class="form-control"
+        pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+        required
+      />
+      <div class="alert alert-danger"
+      role="alert"
+      *ngIf="password1_.touched && password1_.invalid"
+    >
+      Password should contain at least 8 chacters, 1 number and 1 special character</div>
+    </div>
+    <div class="mb-3">
+      <label for="password2" class="form-label">Confirm Password</label>
+      <input
+        name="password2"
+        #password2_ ="ngModel"
+        [(ngModel)]="password2"
+        id="password2"
+        type="password"
+        class="form-control"
+        pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+        value="password1_.value"
+        required
+      />
+      <div class="alert alert-danger" role="alert" *ngIf="password2_.touched && password2_.invalid">Passwords do not match</div>
+    </div>
+    <!-- ngSubmitを設定したから、type="submit"が必要 -->
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Sign Up</button>
+    <div *ngIf="signupStatus" class="success">
+      Succeed in sign up. Please log in <a routerLink="/login">here</a>
+    </div>
+    <div *ngIf="!signupStatus">
+      Sorry, something went wrong. Server responded with
+      {{ signunMessage.sqlMessage }}
+    </div>
+  </form>
+</div>

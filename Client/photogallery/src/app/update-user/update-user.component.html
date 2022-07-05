@@ -1,0 +1,32 @@
+<h1>Update User</h1>
+<div class="container center signup mt-5">
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">First Name</label>
+    <input [(ngModel)]="first_name" type="text" class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Last Name</label>
+    <input [(ngModel)]="last_name" type="text" class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Phone Number</label>
+    <input [(ngModel)]="phone_number" type="text" class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input [(ngModel)]="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input [(ngModel)]="password" type="text" class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button class="btn btn-primary" (click)="updateUser()">Update Details</button> |
+  <button class="btn btn-secondary" (click)="deleteUser()">Delete</button>
+  <div *ngIf="updateStatus" [style.display]="showMessgae">Your details are suucd</div>
+  <div class="errormessage" [style.display]="showMessgae" *ngIf="!updateStatus">Something went wrong. Pleae try again.</div>
+</div>

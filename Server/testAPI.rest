@@ -1,0 +1,92 @@
+@url = http://localhost:4400
+
+GET {{url}}/photosapi
+
+###
+
+GET {{url}}/photosapi/5
+
+###
+
+GET {{url}}/employeesapi
+
+###
+
+GET {{url}}/employeessp
+
+###
+GET {{url}}/employeesapi/3
+
+###
+POST {{url}}/login
+Content-Type: application/json
+
+{
+    "email": "bob@domain.com",
+    "password": "654321"
+}
+
+
+###
+POST {{url}}/signup
+Content-Type: application/json
+
+{
+    "first_name": "Jcob",
+    "last_name": "Andrew",
+    "phone_number": "123-456",
+    "email": "jcob@domain.com",
+    "password": "123456"
+
+}
+
+###
+
+PUT {{url}}/updateUser
+Content-Type: application/json
+
+{
+    "userID":"10",
+    "first_name": "Andrew",
+    "last_name": "Andrew",
+    "phone_number": "123-456",
+    "email": "jcob@domain.com",
+    "password": "123456"
+}
+
+###
+GET {{url}}/user/10
+
+###
+DELETE {{url}}/deleteuser/8
+
+###
+GET {{url}}/photos
+
+###
+GET {{url}}/photos/25
+
+###
+POST {{url}}/photos
+Content-Type: application/json
+
+{
+    "albumId_fromC":1,
+    "title_fromC": "landscape pic",
+    "url_fromC": "claudel-rheault-ZVbv1akA-l4-unsplash.jpg",
+    "tn_fromC": "tn_claudel-rheault-ZVbv1akA-l4-unsplash.jpg"
+}
+
+###
+POST {{url}}/upload
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+    
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file_fromC"; filename="tn_claudel-rheault-ZVbv1akA-l4-unsplash.jpg" 
+Content-Type: image/png
+
+< ./tn_claudel-rheault-ZVbv1akA-l4-unsplash.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+DELETE {{url}}/photos/25
