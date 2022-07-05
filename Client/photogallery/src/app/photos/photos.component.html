@@ -1,7 +1,7 @@
 <div class="container">
   <!-- To practice @Input in "printname" component -->
   <!-- [] is added if binding with backend -->
-  <printname [name]="myname" [color]="textcolor"></printname>
+  <printname [name]="myname" [color]="textcolor"></printname> ({{ name_of_env }})
   <div class="mb-3">
     <label for="albumID" class="form-label">Albumn ID</label>
     <input type="text" class="form-control" id="albumID" placeholder="name@example.com" [(ngModel)]="albumId">
@@ -25,11 +25,10 @@
 
 <div class="album py-5 bg-light">
   <div class="container">
-
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <div class="col" *ngFor="let photo of photos">
         <div class="card shadow-sm" #photocard>
-          <div class="div.bd-@laceholder-img card-img-top" style="background-image: url('http://localhost:4400/{{photo.url}}');">
+          <div class="div.bd-@laceholder-img card-img-top" style="background-image: url('{{server + photo.url}}');">
             <svg (click)="deletePhoto(photo.id, photocard)" xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-x-square-fill close" viewBox="0 0 16 16">
               <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
             </svg>

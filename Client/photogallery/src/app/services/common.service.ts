@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 interface Login {
   login: boolean;
   message:string;
@@ -17,10 +18,11 @@ interface Login {
 })
 export class CommonService {
 
-  private loginURL = "http://localhost:4400/login";
-  private userURL = "http://localhost:4400/user";
-  private updateURL = "http://localhost:4400/updateUser";
-  private deleteURL = "http://localhost:4400/deleteuser";
+  private server = environment.server;
+  private loginURL = this.server + "login";
+  private userURL = this.server + "user";
+  private updateURL = this.server + "updateUser";
+  private deleteURL = this.server + "deleteuser";
 
   constructor(private http:HttpClient) { }
 

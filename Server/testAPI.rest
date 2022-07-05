@@ -64,6 +64,9 @@ DELETE {{url}}/deleteuser/8
 GET {{url}}/photos
 
 ###
+GET http://walrus-app-vpwik.ondigitalocean.app/photos
+
+###
 GET {{url}}/photos/25
 
 ###

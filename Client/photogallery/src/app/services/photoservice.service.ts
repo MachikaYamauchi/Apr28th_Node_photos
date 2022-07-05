@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Photo } from '../interfaces/photo.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PhotoserviceService {
 
-  private url = "http://localhost:4400/photosapi";
-  private fileuploadURL = "http://localhost:4400/upload";
-  private photoURL = "http://localhost:4400/photos"
+  private server = environment.server;
+  private url = this.server + "photosapi";
+  private fileuploadURL = this.server + "upload";
+  private photoURL = this.server + "photos"
 
   constructor(private http:HttpClient) { }
 
